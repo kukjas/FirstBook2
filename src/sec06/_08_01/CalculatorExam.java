@@ -15,5 +15,6 @@ public class CalculatorExam {
 		System.out.println(result2);
 		
 		cal.powerOff();
+		
 	}
 }
