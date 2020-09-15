@@ -3,7 +3,6 @@ package sec06._08_01;
 public class ComputerExam {
 	public static void main(String[] args) {
 
-//		¹è¿­
 		Computer myCom = new Computer();
 		int[] values1 = {1,2,3};
 		int result1 = myCom.sum1(values1);
