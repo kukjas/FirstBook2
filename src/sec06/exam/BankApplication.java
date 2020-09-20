@@ -2,6 +2,8 @@ package sec06.exam;
 
 import java.util.Scanner;
 
+import javax.print.attribute.standard.Finishings;
+
 public class BankApplication {
 
 	private static Scanner scan = new Scanner(System.in);
@@ -23,9 +25,9 @@ public class BankApplication {
 			} else if (no == 2) {
 				accountList();
 			} else if (no == 3) {
-//				deposit();
+				deposit();
 			} else if (no == 4) {
-//				withdraw();
+				withdraw();
 			} else if (no == 5) {
 				run = false;
 			}
@@ -34,37 +36,39 @@ public class BankApplication {
 	}
 
 	private static void createAccount() {
+		int i = 0;
+		boolean run = true;
+		
+		for (int j = 0; j < 99; j++) {
+			BankArray[i].getAno().equals(null);
+		}
+		
+		do {
+			BankArray[i] = new Bank("","",0);
+//			if()
+			System.out.println("----------");
+			System.out.println("계좌생성");
+			System.out.println("----------");
+			System.out.println("");
 
-//		boolean run = true;
-//		int i = 0;
-//		do {
-//			BankArray[i].setAno("");
-//			BankArray[i].setOwner("");
-//			BankArray[i].setBalance(0);
-//			if (i ==99) {
-//				run =false;
-//			}
-//		}while(run);
+//			계좌생성
 
-		System.out.println("----------");
-		System.out.println("계좌생성");
-		System.out.println("----------");
-		System.out.println("");
-
-		System.out.print("계좌번호: ");
-		String ano = scan.next();
-		BankArray[0].setAno(ano);
-		System.out.println(BankArray[0].getAno());
-//		String a = BankArray[0].getAno();
-//		System.out.println(a);
-//		BankArray[].setAno(ano);
-//		System.out.println("AAA " + ano);
-
-//		System.out.print("계좌주: ");
-//		String owner = scan.next();
-//		System.out.println(owner);
-//		System.out.print("초기입금액: ");
-//		int balance = Integer.parseInt(scan.next());
+			
+//			계좌번호
+			System.out.print("계좌번호: ");
+			String ano = scan.next();
+			BankArray[i].setAno(ano);
+//			계좌주
+			System.out.print("계좌주: ");
+			String owner = scan.next();
+			BankArray[i].setOwner(owner);
+			
+//			첫 입금액
+			System.out.print("초기입금액: ");
+			int balance = Integer.parseInt(scan.next());
+			BankArray[i].setBalance(balance);
+		} while (run);
+		
 //		System.out.println("결과: 계좌가 생성되었습니다.");
 
 	}
@@ -81,17 +85,17 @@ public class BankApplication {
 
 	}
 
-//	private static void deposit() {
-//		System.out.println("-----");
-//		System.out.println("예금");
-//		System.out.println("-----");
-//	}
-//	
-//	private static void withdraw() {
-//		System.out.println("-----");
-//		System.out.println("출금");
-//		System.out.println("-----");
-//	}
+	private static void deposit() {
+		System.out.println("-----");
+		System.out.println("예금");
+		System.out.println("-----");
+	}
+	
+	private static void withdraw() {
+		System.out.println("-----");
+		System.out.println("출금");
+		System.out.println("-----");
+	}
 
 	private Bank findBankAno(String ano) {
 		Bank myBank = new Bank("","",0);
@@ -109,29 +113,5 @@ public class BankApplication {
 
 		return myBank;
 	}
-
-//	private static Bank findBankAno(String ano) {
-//		
-//		String bankAno;
-//		Bank mybank = new Bank(null, null, 0);
-//		boolean run = true;
-//		int i = 0;
-//		
-//		 do{
-//				 if(BankArray[i].getAno() == ano){
-//					 run = false;
-//					 mybank.setAno();
-//				 }else {
-//					 i++;
-//				 }
-//				
-//			}while(run);
-
-//		Bank mybank = new Bank(ano, null, 0);
-//		if(ano.equals(bankAno)==false) {
-//			mybank.setAno();
-//		}
-//				
-//		return null;
-//		}
+	
 }
