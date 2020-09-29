@@ -2,8 +2,6 @@ package sec06.exam;
 
 import java.util.Scanner;
 
-import javax.print.attribute.standard.Finishings;
-
 public class BankApplication {
 
 	private static Scanner scan = new Scanner(System.in);
@@ -20,6 +18,7 @@ public class BankApplication {
 
 			int no = scan.nextInt();
 
+			// 함수선택
 			if (no == 1) {
 				createAccount();
 			} else if (no == 2) {
@@ -36,82 +35,194 @@ public class BankApplication {
 	}
 
 	private static void createAccount() {
+		// 배열 index
 		int i = 0;
-		boolean run = true;
-		
-		for (int j = 0; j < 99; j++) {
-			BankArray[i].getAno().equals(null);
+		// 입금가능여부
+		boolean run;
+
+		// 배열 index 체크
+		for (int j = 0; j < 100; j++) {
+			if (BankArray[i] != null) {
+				i = j;
+			}
 		}
-		
-		do {
-			BankArray[i] = new Bank("","",0);
-//			if()
-			System.out.println("----------");
-			System.out.println("계좌생성");
-			System.out.println("----------");
-			System.out.println("");
 
-//			계좌생성
+		// 출력
+		System.out.println("----------");
+		System.out.println("계좌생성");
+		System.out.println("----------");
+		System.out.println("");
 
-			
-//			계좌번호
-			System.out.print("계좌번호: ");
-			String ano = scan.next();
+		// 계좌생성
+		BankArray[i] = new Bank("", "", 0);
+
+		// 계좌번호 입력
+		System.out.print("계좌번호: ");
+		String ano = scan.next();
+
+		// 동일한 계좌번호 조회
+		for (int j = 0; j < i; j++) {
+			// System.out.println("현재 존재하는 계좌 : BankArray[" + j + "] =" +
+			// BankArray[j].getAno());
+			if (ano.equals(BankArray[j].getAno())) {
+				System.out.println("해당계좌 번호는 이미 존재합니다. 다른계좌 번호를 선택해주십시오.");
+				BankArray[(i)] = null;
+				main(null);
+			}
+		}
+
+		// 계좌번호 숫자체크
+		try {
+			int temp = Integer.parseInt(ano);
 			BankArray[i].setAno(ano);
-//			계좌주
-			System.out.print("계좌주: ");
-			String owner = scan.next();
-			BankArray[i].setOwner(owner);
-			
-//			첫 입금액
-			System.out.print("초기입금액: ");
-			int balance = Integer.parseInt(scan.next());
-			BankArray[i].setBalance(balance);
-		} while (run);
-		
-//		System.out.println("결과: 계좌가 생성되었습니다.");
+			run = true;
+		} catch (Exception NumberFormatException) {
+			BankArray[i] = null;
+			run = false;
+			System.out.println("계좌번호는 숫자로 입력해주십시오");
+			main(null);
+		}
 
+		// 계좌주 입력
+		System.out.print("계좌주: ");
+		String owner = scan.next();
+		BankArray[i].setOwner(owner);
+
+		// 첫 입금액
+		System.out.print("초기입금액: ");
+		int balance = 0;
+		
+		// 입금액 int 체크 후 입력
+		try {
+			balance = Integer.parseInt(scan.next());
+			BankArray[i].setBalance(balance);
+			run = true;
+		} catch (Exception NumberFormatException) {
+			BankArray[i] = null;
+			run = false;
+			System.out.println("계좌번호는 숫자로 입력해주십시오");
+			main(null);
+		}
 	}
 
+	// 계좌 목록 출력
 	private static void accountList() {
-
+		// 출력
 		System.out.println("----------");
 		System.out.println("계좌목록");
 		System.out.println("----------");
 
-		if (BankArray[0].getAno() == "123") {
-			System.out.println("0o");
+		int i = 0;
+		
+		// 실제 목록 출력
+		while (BankArray[i] != null) {
+			System.out.println(
+					BankArray[i].getAno() + "		" + BankArray[i].getOwner() + "		" + BankArray[i].getBalance());
+			if (i == 99) {
+				break;
+			} else {
+				i++;
+			}
 		}
-
 	}
 
 	private static void deposit() {
-		System.out.println("-----");
-		System.out.println("예금");
-		System.out.println("-----");
-	}
-	
-	private static void withdraw() {
-		System.out.println("-----");
-		System.out.println("출금");
-		System.out.println("-----");
-	}
-
-	private Bank findBankAno(String ano) {
-		Bank myBank = new Bank("","",0);
-		
 		boolean run = true;
-		int i = 0;
+		int num = 0;
+		String i = ""; 
 		
-		do {
-			if (myBank.getAno() == ano | i==99) {
-				run = false;
-			} else {
-				i ++;
+//		계좌넘버 숫자로 입력
+		while (run) {
+			try {
+				num = Integer.parseInt(i);
+				System.out.println(1);
+			} catch (Exception numberException) {
+				System.out.println(2);
+				break;
 			}
-		} while (run);
+		}
+		
+		System.out.println(num);
+		
+		// 가상계좌생성
+//		Bank myBank = new Bank("", "", 0);
+		
+		
+		
+		
+		// 계좌번호 입력 및 동일한 계좌번호 조회
+		
+//		myBank = 
+		
+		
+		
+		
+		
+//	}
 
+	// System.out.println("현재 존재하는 계좌 : BankArray[" + j + "] =" +
+	// BankArray[j].getAno());
+//		for (int j = 0; j <= i; j++) {
+
+//				main(null);
+//				run = false;
+//			}
+
+	// 저축가능여부
+//	Bank myBank = new Bank("", "", 0);
+
+//		for (int j = 0; j < length; j++) {
+//			System.out.println(i);
+//			if (ano == myBank.getAno() ) {
+//				System.out.println("찾았다");
+//				run = false;
+//			}else if(ano != myBank.getAno() && i ==(length -1)){
+//				System.out.println("해당 계좌는 존재하지 않습니다.");
+//			}
+//		}
+
+	// System.out.println(myBank.getBalance());
+	//// 현재 저축금액 조회
+	// int Balance = myBank.getBalance();
+	//// 저축금액 입력
+	// System.out.print("저축할 금액: ");
+	// int deposit = 0;
+	//
+	//// 저축할 금액 int 체크 후 입력
+	// try {
+	// deposit= Integer.parseInt(scan.next());
+	// } catch (Exception NumberFormatException) {
+	// System.out.println("계좌번호는 숫자로 입력해주십시오");
+	// main(null);
+	// }
+	//
+	// myBank.setBalance(Balance + deposit);;
+	}
+
+	private static void withdraw() {
+		System.out.println("");
+	}
+
+	private static Bank findBankAno(String ano) {
+		// 변수 생성
+		int i = 0;
+		Bank myBank = new Bank("", "", 0);
+
+		// 배열 조회
+		while (BankArray[i] != null) {
+			// System.out.println(BankArray[i].getAno() +" " + BankArray[i].getOwner() +" "
+			// + BankArray[i].getBalance());
+			if (i == 100) {
+				// 0번부터 99번까지 조회이기 때문에 만약 조회하는 배열의 객체가 100번이면 조회 끝
+				break;
+			}else if (BankArray[i].getAno() == ano) {
+				// 위 조건을 통과 후  입력한 계좌 번호가 조회하는 계좌번호가 같은 경우 myBank에 입력
+				myBank = BankArray[i];
+				break;
+			} else {
+				i++;
+			}
+		}
 		return myBank;
 	}
-	
 }

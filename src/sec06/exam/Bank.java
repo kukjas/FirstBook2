@@ -17,5 +17,5 @@ public class Bank {
 	public String getOwner() {return owner;}
 	public void setOwner(String owner) {this.owner = owner;}
 	public int getBalance() {return balance;}
-	public void setBalance(int balance) {this.balance = balance;}
+	public void setBalance(int string) {this.balance = string;}
 }
