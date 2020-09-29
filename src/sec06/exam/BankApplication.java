@@ -17,7 +17,7 @@ public class BankApplication {
 			System.out.print("선택> ");
 
 			int no = scan.nextInt();
-
+			
 			// 함수선택
 			if (no == 1) {
 				createAccount();
@@ -139,7 +139,10 @@ public class BankApplication {
 			main(null);
 		}
 
-		System.out.println(ano);
+		myBank = findBankAno(ano);
+		String Owner = myBank.getOwner();
+		System.out.println("Owner: " + Owner);
+		System.out.println("balace" + myBank.getBalance());
 		
 
 	}
@@ -156,13 +159,9 @@ public class BankApplication {
 
 		// 배열 조회
 		while (BankArray[i] != null) {
-			// System.out.println(BankArray[i].getAno() +" " + BankArray[i].getOwner() +" "
-			// + BankArray[i].getBalance());
 			if (i == 100) {
-				// 0번부터 99번까지 조회이기 때문에 만약 조회하는 배열의 객체가 100번이면 조회 끝
 				break;
-			}else if (BankArray[i].getAno() == ano) {
-				// 위 조건을 통과 후  입력한 계좌 번호가 조회하는 계좌번호가 같은 경우 myBank에 입력
+			}else if (BankArray[i].getAno().equals(ano)) {
 				myBank = BankArray[i];
 				break;
 			} else {
@@ -171,4 +170,6 @@ public class BankApplication {
 		}
 		return myBank;
 	}
+//	private 함수 끝
+	
 }
