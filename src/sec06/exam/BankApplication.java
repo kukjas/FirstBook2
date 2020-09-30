@@ -148,30 +148,67 @@ public class BankApplication {
 		//계좌가 없는 곳까지 조회, 계좌는 100개만 생성되기에 숫자 제한은 필요 없음
 		while (BankArray[i] != null) {
 			if (BankArray[i].getAno().equals(ano)) {
-				System.out.println(1);
+				System.out.print("추가입금액: ");
+				String temp = scan.next();
+				//입금액 숫자 오류 조회
+				try {
+					credit= Integer.parseInt(temp);
+					System.out.println("본래 소유액: " + myBank.getBalance());
+					System.out.println("입금결과: " + (myBank.getBalance() + credit));
+					main(null);
+				} catch (Exception NeumberFormatException) {	
+					System.out.println("추가입금액은 숫자로 입력해주십시오.");
+					main(null);
+				}
 			}else {
-				System.out.println(2);
+				System.out.println("해당 계좌번호와 동일한 계좌는 없습니다.");
+				main(null);
 			}
 		}
-
-		//		계좌관리
-		System.out.println("추가입금액 입력 바랍니다.");
-		String temp = scan.nextLine();
-
-		//		입금액 숫자 오류 조회
-		try {
-			credit= Integer.parseInt(temp);
-		} catch (Exception NeumberFormatException) {	
-			System.out.println("추가입금액은 숫자로 입력해주십시오.");
-			main(null);
-		}
-		System.out.println("본래 소유액: " + myBank.getBalance());
-		System.out.println("입금결과: " + (myBank.getBalance() + credit));
 	}
 
 	private static void withdraw() {
 
-		System.out.println("");
+		int i = 0;
+		boolean run = true;
+		String ano = "";
+		int credit = 0;
+		Bank myBank =  new Bank("", "", 0);
+
+		System.out.print("계좌번호를 입력하세요: ");
+		ano = scan.next();
+		//		계좌넘버 숫자 오류조회
+		try {
+			int j = Integer.parseInt(ano);
+		} catch (Exception numberException) {
+			System.out.println("계좌번호를 숫자로 입력하세요");
+			main(null);
+		}
+		
+		//ano가 계좌번호인 경우 해당 계좌는 계좌
+		myBank = findBankAno(ano);
+		
+		// 그러나 ""가 계좌번호거나 계좌번호 같은 것이 하나도 없는 경우 에러
+		//계좌가 없는 곳까지 조회, 계좌는 100개만 생성되기에 숫자 제한은 필요 없음
+		while (BankArray[i] != null) {
+			if (BankArray[i].getAno().equals(ano)) {
+				System.out.print("추가출금액: ");
+				String temp = scan.next();
+				//입금액 숫자 오류 조회
+				try {
+					credit= Integer.parseInt(temp);
+					System.out.println("본래 소유액: " + myBank.getBalance());
+					System.out.println("출금결과: " + (myBank.getBalance() - credit));
+					main(null);
+				} catch (Exception NeumberFormatException) {	
+					System.out.println("추가입금액은 숫자로 입력해주십시오.");
+					main(null);
+				}
+			}else {
+				System.out.println("해당 계좌번호와 동일한 계좌는 없습니다.");
+				main(null);
+			}
+		}
 	}
 
 	private static Bank findBankAno(String ano) {
@@ -192,6 +229,4 @@ public class BankApplication {
 		}
 		return myBank;
 	}
-	//	private 함수 끝
-
 }
