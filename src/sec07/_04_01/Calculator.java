@@ -1,8 +1,8 @@
 package sec07._04_01;
 
 public class Calculator {
-		double areaCircle(double r) {
-			System.out.println("Calculator 按眉狼 areaCircle() 角青");
-			return 3.14159 * r * r;
-		}
+	double areaCircle(double r) {
+		System.out.println("Calculator 按眉狼 areaCircle() 角青");
+		return 3.14159 * r * r;
+	}
 }
