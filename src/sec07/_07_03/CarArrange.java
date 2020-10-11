@@ -1,4 +1,6 @@
-package sec07._07_02;
+package sec07._07_03;
+
+import sec07._07_02.Tire;
 
 //배열로 객체 관리
 public class CarArrange {
